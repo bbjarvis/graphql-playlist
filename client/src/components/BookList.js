@@ -1,7 +1,8 @@
-import React, { Component }  from 'react';
-import { gql } from "@apollo/client";
-import { graphql } from '@apollo/client/react/hoc';
-// import { graphql } from "react-apollo";
+// import './Book'
+import { 
+  gql,
+  useQuery,
+} from "@apollo/client";
 
 const getBooksQuery = gql`
     {
@@ -13,8 +14,10 @@ const getBooksQuery = gql`
 `
 
 function BookList() {
+  const { loading, error, data } = useQuery(getBooksQuery);
+  console.log(data);
+
     return (
-        // console.log(this.props)
       <div>
         <ul id="book-list">
             <li>Book name</li>
@@ -23,4 +26,4 @@ function BookList() {
     );
   }
   
-  export default graphql(getBooksQuery)(BookList);
+  export default BookList;
