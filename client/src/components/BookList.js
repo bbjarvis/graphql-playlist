@@ -1,5 +1,7 @@
+import React, { Component }  from 'react';
 import { gql } from "@apollo/client";
-import { graphql } from "react-apollo";
+import { graphql } from '@apollo/client/react/hoc';
+// import { graphql } from "react-apollo";
 
 const getBooksQuery = gql`
     {
