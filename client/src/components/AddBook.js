@@ -1,7 +1,9 @@
 import {
     useQuery,
+    useMutation,
+    gql
 } from "@apollo/client";
-import { getAuthorsQuery } from '../queries/queries';
+import { getAuthorsQuery, addBookMutation } from '../queries/queries';
 import React, { useState, useEffect} from 'react'
 
 function AddBook() {
@@ -9,17 +11,30 @@ function AddBook() {
     const [name, setName] = useState('')
     const [genre, setGenre] = useState('')
     const [authorId, setAuthorId] = useState('')
+    const { date } = useQuery(getAuthorsQuery)
+    const [addBook, { newData }] = useMutation(addBookMutation);
+
 
     const submitForm = (e) => {
+        console.log(name, genre, authorId)
         e.preventDefault();
+        addBook({
+            variables:{
+                name,
+                genre,
+                authorId
+            }
+        })
         setName("")
         setGenre("")
+        setAuthorId("")
     }
 
     const { data } = useQuery(getAuthorsQuery);
     console.log(data)
     if (data) return (
         <form id="add-book" onSubmit={e => submitForm(e)}>
+ 
 
             <div className="field">
                 <label>Book name:</label>
@@ -34,6 +49,7 @@ function AddBook() {
             <div className="field">
                 <label>Author:</label>
                 <select value={authorId} onChange={(e) => setAuthorId(e.target.value)}>
+                    <option>Select Author</option>
                     {data.authors.map((author) => {
                         return (
                             <option key={author.id} value={author.id}>{author.name}</option>
