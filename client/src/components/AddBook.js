@@ -10,10 +10,16 @@ function AddBook() {
     const [genre, setGenre] = useState('')
     const [authorId, setAuthorId] = useState('')
 
+    const submitForm = (e) => {
+        e.preventDefault();
+        setName("")
+        setGenre("")
+    }
+
     const { data } = useQuery(getAuthorsQuery);
     console.log(data)
     if (data) return (
-        <form id="add-book">
+        <form id="add-book" onSubmit={e => submitForm(e)}>
 
             <div className="field">
                 <label>Book name:</label>
