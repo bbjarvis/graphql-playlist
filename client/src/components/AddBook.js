@@ -17,7 +17,7 @@ function AddBook() {
 
 
     const submitForm = (e) => {
-        console.log(name, genre, authorId)
+
         e.preventDefault();
         addBook({
             variables:{
@@ -33,7 +33,7 @@ function AddBook() {
     }
 
     const { data } = useQuery(getAuthorsQuery);
-    console.log(data)
+
     if (data) return (
         <form id="add-book" onSubmit={e => submitForm(e)}>
  
