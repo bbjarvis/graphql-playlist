@@ -4,7 +4,7 @@ import {
 } from "@apollo/client";
 import { getBooksQuery } from '../queries/queries';
 import BookDetails from './BookDetails';
-import React, { useState, useEffect} from 'react'
+import React, { useState } from 'react'
 
 
 function BookList() {
@@ -15,6 +15,7 @@ function BookList() {
   if (error) return <p>Something went wrong</p>
   return (
     <div>
+       <BookDetails bookId={id}/>
     {data.books.map(book => {
     return (
 
@@ -27,7 +28,7 @@ function BookList() {
      
     );
   })}
-  <BookDetails bookId={id}/>
+ 
   </div>
 
   )

@@ -1,18 +1,15 @@
 import {
     useQuery,
     useMutation,
-    refetchQueries,
-    gql
 } from "@apollo/client";
 import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queries/queries';
-import React, { useState, useEffect} from 'react'
+import React, { useState } from 'react'
 
 function AddBook() {
 
     const [name, setName] = useState('')
     const [genre, setGenre] = useState('')
     const [authorId, setAuthorId] = useState('')
-    const { date } = useQuery(getAuthorsQuery)
     const [addBook, { newData }] = useMutation(addBookMutation);
 
 

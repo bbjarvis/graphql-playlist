@@ -6,7 +6,7 @@ import { getBookQuery } from '../queries/queries';
 
 
 function BookDetails({bookId}) {
-    const { loading, error, data } = useLazyQuery(getBookQuery, {variables: {id: bookId}});
+    const { loading, error, data } = useQuery(getBookQuery, {variables: {id: bookId}});
 
     if (loading) return <p>Loading....</p>
     if (error) return <p>Something went wrong</p>
@@ -15,7 +15,7 @@ function BookDetails({bookId}) {
     console.log(data);
         return (
             <div id="book-details">
-                BookDetails
+
                 <h3>{data.book.name}</h3>
                 <h4>Genre: {data.book.genre}</h4>
                 <h5>Author: {data.book.author.name}</h5>
