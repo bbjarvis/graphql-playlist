@@ -8,9 +8,9 @@ import { getBookQuery } from '../queries/queries';
 function BookDetails({bookId}) {
     const { loading, error, data } = useQuery(getBookQuery, {variables: {id: bookId}});
 
-    if (loading) return <p>Loading....</p>
-    if (error) return <p>Something went wrong</p>
-    if (!data) return <p>Please Select a Book to see Details</p>
+    if (loading) return <p id="book-details">Loading....</p>
+    // if (error) return <p id="book-details">Something went wrong</p>
+    if (!data) return <p id="book-details">Please Select a Book to see Details</p>
     if (data)
     console.log(data);
         return (

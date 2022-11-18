@@ -22,6 +22,7 @@ code {
 
 #book-list{
   padding: 0%;
+  height: 70%;
 }
 
 .Book{
@@ -39,8 +40,10 @@ form{
   background: #fff;
   padding: 20px;
   position: fixed;
-  right: 0;
+  /* right: 0; */
+  left: 0;
   bottom: 0;
+  height: 30%;
   /* width: 400px; */
   width: 40%;
 
